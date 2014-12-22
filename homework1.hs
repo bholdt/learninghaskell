@@ -12,11 +12,8 @@ doubleEverySecond [] = []
 doubleEverySecond [x] = [x]
 doubleEverySecond (x:y:zs) = x : (y + y) : doubleEverySecond zs
 
-
 doubleEveryOther :: [Integer] -> [Integer]
-doubleEveryOther xs = reverse(doubleEverySecond(reverse(xs)))
+doubleEveryOther xs = reverse . doubleEverySecond . reverse $ xs
 
-main = do
-    print (toDigits(123))
-    print (toDigitsRev(123))
-    print (doubleEveryOther([8,7,6,5]))​
+main = print $ doubleEveryOther [8,7,6,5]
+
