@@ -24,6 +24,17 @@ sumDigit n
     | n <= 0 = 0
     | otherwise = n `mod` 10 + sumDigit(n `quot` 10)
 
+checksum :: Integer -> Integer
+checksum n = (sumDigits . doubleEveryOther $ toDigits n) `mod` 10
+
+validate :: Integer -> Bool
+validate n = if (checksum n) /= 0
+        then False 
+        else 
+            True
+
 main = do
            print $ doubleEveryOther [8,7,6,5]
            print $ sumDigits [12,3,11]
+           print $ validate 4012888888881881
+           print $ validate 4012888888881882
